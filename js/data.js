@@ -18,7 +18,7 @@ function tran(state) {
   }
 }
 
-var No = getNo().no; // 送货单号
+var No = getNo().order_no; // 送货单号
 var Mode = getNo().mode; // 第二种节点的参数
 // 第一次请求建立连接
 (function testCon(callback) {

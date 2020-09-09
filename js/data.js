@@ -19,25 +19,25 @@ function tran(state) {
 }
 
 var No = getNo().order_no; // 送货单号
-var Mode = getNo().mode; // 第二种节点的参数
-// 第一次请求建立连接
-(function testCon(callback) {
-  // 发送异步请求
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.onreadystatechange = function () {
-    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-      console.log('第一次请求建立连接');
-      putData(proData);
-    }
-  }
-  if (Mode != undefined) {
-    xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No + "&mode=" + Mode, true);
-  } else {
-    xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No, true);
-  }
+// var Mode = getNo().mode; // 第二种节点的参数
+// // 第一次请求建立连接
+// (function testCon(callback) {
+//   // 发送异步请求
+//   var xmlHttp = new XMLHttpRequest();
+//   xmlHttp.onreadystatechange = function () {
+//     if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+//       console.log('第一次请求建立连接');
+//       putData(proData);
+//     }
+//   }
+//   if (Mode != undefined) {
+//     xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No + "&mode=" + Mode, true);
+//   } else {
+//     xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No, true);
+//   }
 
-  xmlHttp.send();
-})();
+//   xmlHttp.send();
+// })();
 
 // 第二次ajax请求获取数据
 function putData(callback) {
@@ -50,11 +50,11 @@ function putData(callback) {
       callback(dd);
     }
   }
-  if (Mode != undefined) {
-    xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No + "&mode=" + Mode, true);
-  } else {
-    xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No, true);
-  }
+  // if (Mode != undefined) {
+  //   xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No + "&mode=" + Mode, true);
+  // } else {
+  xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No, true);
+  // }
   xmlHttp.send();
 }
 
@@ -140,7 +140,7 @@ function proData(data) {
   var a_site = arrive.querySelector('.site');
   var a_date = arrive.querySelector('.date');
   var li = document.querySelector('#message ul');
-  if (getNo().mode) {
+  if (getData[0].mode == 2) {
     // 第二种节点 不添加运输中节点
     a_site.innerHTML = getData[0].detail[0].node;
     a_date.innerHTML = getData[0].detail[0].nodeTime;
@@ -233,9 +233,9 @@ function proData(data) {
   mapBtn.style.pointerEvents = 'auto';
 }
 // 渲染数据
-// (function () {
-//   putData(proData);
-// })();
+(function () {
+  putData(proData);
+})();
 
 
 

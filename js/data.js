@@ -255,3 +255,9 @@ closeMap.onclick = function () {
   map.style.display = 'none';
   // bg.style.display = 'none';
 }
+
+// 返回查询页
+var back = document.querySelector('#back');
+back.onclick = function () {
+  location.href = '/search.html';
+}

@@ -47,13 +47,17 @@ function putData(callback) {
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
       var dd = xmlHttp.responseText;
       console.log('第二次请求获取数据');
-      callback(dd);
+      if (dd != '[]') {
+        callback(dd);
+      } else {
+        alert('单号不存在');
+      }
     }
   }
   // if (Mode != undefined) {
   //   xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No + "&mode=" + Mode, true);
   // } else {
-  xmlHttp.open("get", "https://lmsqas.whchem.com/myscm/getTransportation?delivery_order_no=" + No, true);
+  xmlHttp.open("get", "https://lms.whchem.com/myscm/getTransportation?delivery_order_no=" + No, true);
   // }
   xmlHttp.send();
 }
@@ -165,8 +169,8 @@ function proData(data) {
           // 否则,则将detail中给第一个对象的数据渲染到#first上
           a_site.innerHTML = getData[0].detail[0].node;
           a_date.innerHTML = getData[0].detail[0].nodeTime;
+          we++;
         }
-        we++;
       }
     }
 
@@ -185,6 +189,13 @@ function proData(data) {
         trs.innerHTML = '<img src="img/物流节点_过去.png"><span class="site">' + sites[cc].node + '</span><span class="date">' + sites[cc].nodeTime + '</span>';
         li.appendChild(trs);
       }
+    } else if (flag == true && tag == 0) {
+      for (var cr = 0; cr < we; cr++) {
+        var trs = document.createElement('li');
+        trs.innerHTML = '<img src="img/物流节点_过去.png"><span class="site">' + getData[0].detail[cr].node + '</span><span class="date">' + getData[0].detail[cr].nodeTime + '</span>';
+        li.appendChild(trs);
+      }
+      we++;
     } else {
       addEd();
     }

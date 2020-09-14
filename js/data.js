@@ -97,7 +97,7 @@ function proData(data) {
   }
 
   // 判断状态图片
-  var sta = tran(getData[0].line[0].transportstatus);
+  var sta = tran(getData[0].transportstatus);
 
   // 物流节点左侧直线
   var tline = document.querySelector('#top');
@@ -271,54 +271,3 @@ var back = document.querySelector('#back');
 back.onclick = function () {
   location.href = '/search.html';
 }
-
-[{
-  "truck_name": "鲁FAQ981",
-  "driver_phone": "13626327181",
-  "detail": [{
-    "node": "到达签收 [浙江恒泰源聚氨酯有限公司]",
-    "nodeTime": "2020-09-14 星期一 10:16:15"
-  }, {
-    "node": "车辆离厂 [烟台]",
-    "nodeTime": "2020-09-12 星期六 16:28:44"
-  }, {
-    "node": "车辆结束装车 [烟台]",
-    "nodeTime": "2020-09-12 星期六 16:26:28"
-  }, {
-    "node": "车辆开始装车 [烟台]",
-    "nodeTime": "2020-09-12 星期六 15:55:23"
-  }, {
-    "node": "车辆到厂 [烟台]",
-    "nodeTime": "2020-09-12 星期六 15:36:32"
-  }, {
-    "node": "已安排送货车辆",
-    "nodeTime": "2020-09-12 星期六 7:57:57"
-  }],
-  "leave_factory_time": "2020-09-12",
-  "driver_name": "王建伟",
-  "customer_address": "浙江省台州市温岭市工业城一号路科技园区",
-  "no": "SF20091207707",
-  "norowno": 1,
-  "place_adress": "山东省烟台市福山区万华烟台工业园",
-  "product_name": "MDI",
-  "line": [{
-    "make_time": "2020-09-12 星期六 7:57:57",
-    "delivery_order_no": "0082387895",
-    "into_factory_time": "2020-09-12 星期六 15:36:32",
-    "start_load": "车辆开始装车 [烟台]",
-    "leave_factory": "车辆离厂 [烟台]",
-    "sign": "到达签收 [浙江恒泰源聚氨酯有限公司]",
-    "transportstatus": 2,
-    "end_load": "车辆结束装车 [烟台]",
-    "leave_factory_time": "2020-09-12 星期六 16:28:44",
-    "end_load_time": "2020-09-12 星期六 16:26:28",
-    "into_factory": "车辆到厂 [烟台]",
-    "make": "已安排送货车辆",
-    "start_load_time": "2020-09-12 星期六 15:55:23",
-    "sign_time": "2020-09-14 星期一 10:16:15"
-  }],
-  "qty": 27.02,
-  "delivery_order_no": "0082387895",
-  "re_customer_time": "2020-09-14",
-  "mode": 1
-}]
